@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
-    before_action :require_user_logged_in, only: [:index,:create,:update,:destroy]
+    before_action :require_user_logged_in, only: [:index,:show]
     def index
         @tasks = Task.all
+        if logged_in?
+         @tasks = current_user.tasks.build  
+         @tasks = current_user.tasks.order(id: :desc)
+        end
     end
     
     def show
