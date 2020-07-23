@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-    before_action :require_user_logged_in, only: [:index,:show,:new,:edit,:destroy]
-    before_action :correct_user, only: [:show]
+    before_action :require_user_logged_in, only: [:index,:show,:new,:edit]
+    before_action :correct_user, only: [:show,:edit]
     def index
         @tasks = Task.all
         if logged_in?
