@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     end
     
     def show
-         @task = current_user
+        
     end
     
     def new
@@ -25,11 +25,13 @@ class TasksController < ApplicationController
     end
     
     def edit
-        @task = current_user
+        
+        
     end
     
     def update
-        @task= current_user
+        
+        
         if @task.update(task_params)
             flash[:success] = 'Task は正常に更新されました'
             redirect_to @task
@@ -40,7 +42,8 @@ class TasksController < ApplicationController
     end
     
     def destroy
-        @task = current_user
+        
+        
         @task.destroy
         
         flash[:success] = 'Task は正常に削除されました'
@@ -54,9 +57,9 @@ class TasksController < ApplicationController
     end
     
      def correct_user
-    @task = current_user.tasks.find_by(id: params[:id])
-    unless @task
-      redirect_to root_url
-    end
+        @task = current_user.tasks.find_by(id: params[:id])
+        unless @task
+            redirect_to root_url
+        end
      end
 end
